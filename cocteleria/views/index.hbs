@@ -1,9 +1,20 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
-<p>Holaaaa</p>
-<h2>hola alarcon</h2>
+<div id="login">
 
-
-<h3>Hola socia</h3>
-<p>Última prueba</p>
-<p>Esta vez de verdad!!!</p>
+    <form action="/users/login" method="POST">
+        {{#if missatgeError}}
+        <div class="alert alert-danger" role="alert">
+            {{missatgeError}}
+        </div>
+        {{/if}}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+            <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+            <label for="floatingPassword">Contraseña</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <p>¿No tienes cuenta?</p><a class="btn btn-link" href="/auth/signup">Regístrate</a>
+    </form>
+</div>
