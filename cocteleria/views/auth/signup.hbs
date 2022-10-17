@@ -1,24 +1,22 @@
-<div id="form">
-  <h2>Sign Up</h2>
-  <form action="/auth/signup" method="POST">
-
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
-
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
-
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-
-    <button type="submit">Sign Up</button>
-
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
+<div id="signin">
+  <form action="/signin" method="POST">
+    {{#if missatgeError}}
+    <div class="alert alert-danger" role="alert">
+      {{missatgeError}}
+    </div>
     {{/if}}
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+      <label for="floatingInput">Usuario</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+      <label for="floatingPassword">Contraseña</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="passwordRepeat">
+      <label for="floatingPassword">Repetir contraseña</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrarse</button>
   </form>
 </div>
