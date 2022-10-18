@@ -13,31 +13,32 @@ const path = require("path");
 
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedOut, (req, res, next) => {
   res.render("index");
 });
 
-router.get("/profile", (req, res, next) => {
-  res.render("profile");
-});
 
+router.get("/principal", isLoggedIn, (req, res, next) => {
 
-router.get("/principal", (req, res, next) => {
   Coctel.find()
   .then(resp => {
-    const data = { coctel: resp}
+    const data = { 
+      coctel: resp,
+      usuari: req.session.currentUser
+    }
+    console.log("req.session.currentUser - principal: ", req.session.currentUser)
     res.render("principal", data);
   })
   .catch(err => {
     console.log("error render principal: ", err)
   })
 });
-router.get("/crear", (req, res, next) => {
+
+router.get("/crear", isLoggedIn, (req, res, next) => {
   res.render("crear")
 })
 
-
-router.post("/crear",fileUploader.single('coctel-cover-image'), (req, res) => {
+router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
   const { name, alcohol, ingredientes } = req.body;
     console.log("req.file", req.file);
 
@@ -48,7 +49,12 @@ router.post("/crear",fileUploader.single('coctel-cover-image'), (req, res) => {
     
     res.redirect("/principal")
   })
-  .catch(error => console.log(`Error while creating a new coctel: ${error}`));
+});
+
+router.get("/logout", isLoggedIn, (req, res, next) => {
+  req.session.destroy();
+  res.redirect("/")
+
 })
 
 
