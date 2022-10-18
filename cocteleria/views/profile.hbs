@@ -44,3 +44,20 @@
     </div>
 </nav>
 <h1>profile</h1>
+<h2>Cocteles de {{user}}</h2>
+
+
+{{#each coctelUser}}
+        <div class="col-3 m-1" style="background-color: rgba(223, 223, 222, 0.5)">
+            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel">
+
+            <div class="card-body">
+
+    <h5 class="card-title"> {{name}}</h5>
+    <a href="informacion/{{_id}}" class="btn btn-primary">Más información</a>
+    </div>
+</div>
+    {{!-- <p><strong>Alcohol: </strong>{{alcohol}}</p>
+    <p><strong>Ingredientes: </strong>{{ingredientes}}</p> --}}
+    {{!-- ... Toda la info de cada Coctel --}}
+{{/each}}
