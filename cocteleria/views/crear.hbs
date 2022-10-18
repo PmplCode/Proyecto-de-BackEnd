@@ -47,34 +47,38 @@
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingPassword" placeholder="Alcohol" name="alcohol">
-            <label for="floatingPassword">Elige tu alcohol</label>
+            <label for="floatingPassword">Alcohol</label>
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingPassword" placeholder="Ingredientes"
                 name="ingredientes">
             <label for="floatingPassword"> Ingredientes</label>
         </div>
-
+<div class="form-group">
+    <label>Procedimiento
+        <textarea name="procedimiento" cols="30" rows="4" class="form-control"></textarea>
+    </label>
+</div>
+<div class="form-group">
+    <label>Descripción
+        <textarea name="descripcion" cols="30" rows="4" class="form-control"></textarea>
+    </label>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" name="origen">
+    <label for="floatingInput">Origen</label>
+</div>
+<label for="customRange1" class="form-label">Nivel de dificultad</label>
+<input type="range" class="form-range" id="customRange1" name="puntuacion">
 
         <div class="form-group">
             <label>Sube tu imagen:
                 <input type="file" name="coctel-cover-image" class="form-control-file" />
             </label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="origen">
-            <label for="floatingInput">Origen</label>
-        </div>
-        <div class="form-group">
-            <label>Procedimiento
-                <textarea name="procedimiento" cols="30" rows="4" class="form-control"></textarea>
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Descripción
-                <textarea name="descripcion" cols="30" rows="4" class="form-control"></textarea>
-            </label>
-        </div>
+       
+       
+       
 
         <button type="submit" class="btn btn-primary">Sube tu creación</button>
     </form>

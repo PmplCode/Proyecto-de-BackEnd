@@ -39,22 +39,27 @@
                 <input class="form-control me-2" type="search" placeholder="Buscar por alcohol" aria-label="Search" autocomplete="off" name="alcohol">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
+            <ul class="nav-item">
+                <a class="nav-link" href="/logout">
+                    Log-Out
+                </a>
+            </ul>
         </div>
     </div>
 </nav>
-<h1>Hola {{usuari.username}}</h1
+
 <h2>Aqui puedes ver todos los cócteles</h2>
 <div class="container text-center">
     <div class="row">
 
 {{#each coctel}}
         <div class="col-3 m-1" style="background-color: rgba(223, 223, 222, 0.5)">
-            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del coctel">
+            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel">
 
             <div class="card-body">
 
     <h5 class="card-title"> {{name}}</h5>
-    <a href="#" class="btn btn-primary">Más información</a>
+    <a href="informacion/{{_id}}" class="btn btn-primary">Más información</a>
     </div>
 </div>
     {{!-- <p><strong>Alcohol: </strong>{{alcohol}}</p>
