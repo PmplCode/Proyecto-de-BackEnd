@@ -27,6 +27,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   // Check that username, email, and password are provided
   if (username === "" || password === "") {
+
     res.status(400).render("auth/signup", {
       errorMessage:
         "Todos los campos son obligatorios!",
@@ -36,6 +37,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
 
   if (password != req.body.passwordRepeat) {
+
     res.status(400).render("auth/signup", {
       errorMessage:
         "Contraseñas no coincidentes.",

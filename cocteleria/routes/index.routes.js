@@ -6,6 +6,10 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 const User = require("../models/User.model");
 const Coctel = require("../models/Coctel.model");
+const fileUploader = require('../config/cloudinary.config');
+
+const path = require("path");
+
 
 
 /* GET home page */
@@ -13,8 +17,9 @@ router.get("/", isLoggedOut, (req, res, next) => {
   res.render("index");
 });
 
+
 router.get("/principal", isLoggedIn, (req, res, next) => {
-  
+
   Coctel.find()
   .then(resp => {
     const data = { 
@@ -29,21 +34,19 @@ router.get("/principal", isLoggedIn, (req, res, next) => {
   })
 });
 
-router.get("/profile", isLoggedIn, (req, res, next) => {
-  const datado = {usuari:req.session.currentUser}
-
-  res.render("profile",datado);
-});
-
 router.get("/crear", isLoggedIn, (req, res, next) => {
   res.render("crear")
 })
 
-router.post("/crear", isLoggedIn, (req, res, next) => {
-  const { name, alcohol, ingredientes, pais, descripcion, procedimiento } = req.body;
+router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
+  const { name, alcohol, ingredientes } = req.body;
+    console.log("req.file", req.file);
 
-  Coctel.create({ name, alcohol, ingredientes, pais, descripcion, procedimiento })
-  .then(resp => {
+
+  Coctel.create({ name, alcohol, ingredientes, imageUrl: req.file.path })
+    .then(newlyCreatedCoctelFromDB => {
+        console.log("newlyCreatedCoctelFromDB: ", newlyCreatedCoctelFromDB);
+    
     res.redirect("/principal")
   })
 });
@@ -51,6 +54,9 @@ router.post("/crear", isLoggedIn, (req, res, next) => {
 router.get("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy();
   res.redirect("/")
+
 })
+
+
 
 module.exports = router;
