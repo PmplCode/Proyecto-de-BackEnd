@@ -6,6 +6,7 @@ const coctelSchema = new Schema(
       type: String,
       require: true
     },
+
     alcohol:{
       type: String
       // enum:["Whisky", "Vodka", "Tequila", "Ron", "Ginebra", "Pisco", "Orujo","Brandy", "Coñac", "Cointreau", "Licor de grosella", "Champagne", "Cava","Vermut","Vino", "Licor de fruta"]
@@ -25,6 +26,7 @@ const coctelSchema = new Schema(
     procedimiento:{
       type: String
     },
+
     puntuacion: {
       type: Number,
       enum: [1, 2, 3, 4, 5]
@@ -40,5 +42,4 @@ const coctelSchema = new Schema(
 const Coctel = model("Coctel", coctelSchema);
 
 module.exports = Coctel;
-
 
