@@ -47,11 +47,10 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
 })
 
 router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
-  const { name, alcohol, ingredientes } = req.body;
-    console.log("req.file", req.file);
-
-
-  Coctel.create({ name, alcohol, ingredientes, imageUrl: req.file.path })
+  const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
+  console.log("req.file", req.file);
+  
+  Coctel.create({ name, alcohol, ingredientes, procedimiento, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
     .then(newlyCreatedCoctelFromDB => {
         console.log("newlyCreatedCoctelFromDB: ", newlyCreatedCoctelFromDB);
     
@@ -59,10 +58,24 @@ router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (re
   })
 });
 
+
+
+router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
+  const coctelId = req.params.coctelId
+  Coctel.findById(coctelId)
+    .populate("creador")
+    .then(result => {
+      const data = {
+      coctel: result
+    }
+    res.render("informacion", data)
+  })
+  })
+
+
 router.get("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy();
   res.redirect("/")
-
 })
 
 

@@ -11,14 +11,14 @@ const coctelSchema = new Schema(
       // enum:["Whisky", "Vodka", "Tequila", "Ron", "Ginebra", "Pisco", "Orujo","Brandy", "Coñac", "Cointreau", "Licor de grosella", "Champagne", "Cava","Vermut","Vino", "Licor de fruta"]
     },
     ingredientes: String,
-    imageUrl: String,
-    origen: String,
-    descripcion: String,
     procedimiento: String,
+    descripcion: String,
+    origen: String,
     puntuacion: {
       type: Number,
       enum: [1, 2, 3, 4, 5]
     },
+    imageUrl: String,
     creador: {type: Schema.Types.ObjectId, ref: "User"}
   },
   {
