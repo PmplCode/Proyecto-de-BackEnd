@@ -6,42 +6,65 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 const User = require("../models/User.model");
 const Coctel = require("../models/Coctel.model");
+const fileUploader = require('../config/cloudinary.config');
+
+const path = require("path");
+
 
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedOut, (req, res, next) => {
   res.render("index");
 });
 
-router.get("/principal", (req, res, next) => {
+
+router.get("/principal", isLoggedIn, (req, res, next) => {
+
   Coctel.find()
   .then(resp => {
-    const data = { coctel: resp}
+    const data = { 
+      coctel: resp,
+      usuari: req.session.currentUser
+    }
+    console.log("req.session.currentUser - principal: ", req.session.currentUser)
     res.render("principal", data);
   })
   .catch(err => {
     console.log("error render principal: ", err)
   })
 });
-//// Josep Treballant......
-router.get("/profile", (req, res, next) => {
+
+
+router.get("/profile",isLoggedIn, (req, res, next) => {
   const user = req.session.currentUser.username
   console.log("aaaa :",user)
   res.render("profile",{user:user});
 });
-// No tocar
 
-router.get("/crear", (req, res, next) => {
+
+router.get("/crear", isLoggedIn, (req, res, next) => {
   res.render("crear")
 })
 
-router.post("/crear", (req, res, next) => {
-  const { name, alcohol, ingredientes, pais, descripcion, procedimiento } = req.body;
+router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
+  const { name, alcohol, ingredientes } = req.body;
+    console.log("req.file", req.file);
 
-  Coctel.create({ name, alcohol, ingredientes, pais, descripcion, procedimiento })
-  .then(resp => {
+
+  Coctel.create({ name, alcohol, ingredientes, imageUrl: req.file.path })
+    .then(newlyCreatedCoctelFromDB => {
+        console.log("newlyCreatedCoctelFromDB: ", newlyCreatedCoctelFromDB);
+    
     res.redirect("/principal")
   })
+});
+
+router.get("/logout", isLoggedIn, (req, res, next) => {
+  req.session.destroy();
+  res.redirect("/")
+
 })
+
+
 
 module.exports = router;
