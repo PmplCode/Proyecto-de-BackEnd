@@ -34,6 +34,14 @@ router.get("/principal", isLoggedIn, (req, res, next) => {
   })
 });
 
+
+router.get("/profile",isLoggedIn, (req, res, next) => {
+  const user = req.session.currentUser.username
+  console.log("aaaa :",user)
+  res.render("profile",{user:user});
+});
+
+
 router.get("/crear", isLoggedIn, (req, res, next) => {
   res.render("crear")
 })

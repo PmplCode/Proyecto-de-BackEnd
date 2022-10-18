@@ -76,9 +76,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
       return User.create({ username, password: hashedPassword });
     })
     .then((user) => {
+
       req.session.currentUser = user;
       console.log("req.session.currentUser - registre: ",req.session.currentUser)
       res.redirect("/profile");
+
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -125,6 +127,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
   User.findOne({ username })
     .then((user) => {
       // If the user isn't found, send an error message that user provided wrong credentials
+      console.log("proba user: ", user);
       if (!user) {
         res
           .status(400)
@@ -143,9 +146,11 @@ router.post("/", isLoggedOut, (req, res, next) => {
             return;
           }
 
+
           req.session.currentUser = user;
           console.log("req.session.currentUser - login: ",req.session.currentUser)
           res.redirect("/profile");
+
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -156,7 +161,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      res.status(500).render("auth/logout", { errorMessage: err.message });
+      res.status(500).render("auth/logout", { errorMessage: err.message });  
       return;
     }
 
