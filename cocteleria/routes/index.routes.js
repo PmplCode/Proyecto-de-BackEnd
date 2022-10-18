@@ -9,14 +9,19 @@ const Coctel = require("../models/Coctel.model");
 
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedOut, (req, res, next) => {
   res.render("index");
 });
 
-router.get("/principal", (req, res, next) => {
+router.get("/principal", isLoggedIn, (req, res, next) => {
+  
   Coctel.find()
   .then(resp => {
-    const data = { coctel: resp}
+    const data = { 
+      coctel: resp,
+      usuari: req.session.currentUser
+    }
+    console.log("req.session.currentUser - principal: ", req.session.currentUser)
     res.render("principal", data);
   })
   .catch(err => {
@@ -24,21 +29,28 @@ router.get("/principal", (req, res, next) => {
   })
 });
 
-router.get("/profile", (req, res, next) => {
-  res.render("profile");
+router.get("/profile", isLoggedIn, (req, res, next) => {
+  const datado = {usuari:req.session.currentUser}
+
+  res.render("profile",datado);
 });
 
-router.get("/crear", (req, res, next) => {
+router.get("/crear", isLoggedIn, (req, res, next) => {
   res.render("crear")
 })
 
-router.post("/crear", (req, res, next) => {
+router.post("/crear", isLoggedIn, (req, res, next) => {
   const { name, alcohol, ingredientes, pais, descripcion, procedimiento } = req.body;
 
   Coctel.create({ name, alcohol, ingredientes, pais, descripcion, procedimiento })
   .then(resp => {
     res.redirect("/principal")
   })
+});
+
+router.get("/logout", isLoggedIn, (req, res, next) => {
+  req.session.destroy();
+  res.redirect("/")
 })
 
 module.exports = router;
