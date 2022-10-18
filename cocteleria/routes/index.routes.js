@@ -39,8 +39,18 @@ router.get("/principal", isLoggedIn, (req, res, next) => {
 
 router.get("/profile",isLoggedIn, (req, res, next) => {
   const user = req.session.currentUser.username
+  const userId = req.session.currentUser._id
   console.log("aaaa :",user)
-  res.render("profile",{user:user});
+  Coctel.find({creador: userId})
+  .then(results =>{
+    const dady = {
+      coctelUser: results,
+      user:user
+    }
+    console.log("proba based: ",results)
+    res.render("profile",dady);
+  })
+
 });
 
 
