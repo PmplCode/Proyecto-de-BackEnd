@@ -6,15 +6,27 @@ const coctelSchema = new Schema(
       type: String,
       require: true
     },
-    alcohol: {
-      enum: ["Sin alcohol", "Whisky", "Vodka", "Tequila", "Ron", "Ginebra", "Pisco", "Orujo", "Brandy", "Coñac", "Cointreau", "Licor de grosella", "Champagne", "Cava", "Vermut", "Vino", "Licor de fruta"]
-      
+
+    alcohol:{
+      type: String
+      // enum:["Whisky", "Vodka", "Tequila", "Ron", "Ginebra", "Pisco", "Orujo","Brandy", "Coñac", "Cointreau", "Licor de grosella", "Champagne", "Cava","Vermut","Vino", "Licor de fruta"]
     },
-    ingredientes: String,
-    imageUrl: String,
-    origen: String,
-    descripcion: String,
-    procedimiento: String,
+    ingredientes:{
+      type: String
+    },
+    img:{
+      type: String
+    },
+    pais:{
+      type: String
+    },
+    descripcion:{
+      type: String
+    },
+    procedimiento:{
+      type: String
+    },
+
     puntuacion: {
       type: Number,
       enum: [1, 2, 3, 4, 5]
@@ -30,3 +42,4 @@ const coctelSchema = new Schema(
 const Coctel = model("Coctel", coctelSchema);
 
 module.exports = Coctel;
+

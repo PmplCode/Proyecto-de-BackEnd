@@ -10,25 +10,39 @@ const saltRounds = 10;
 
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
+const Coctel = require("../models/Coctel.model");
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 // GET /auth/signup
-router.get("/signup", isLoggedOut, (req, res) => {
+router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
 
 // POST /auth/signup
-router.post("/signup", isLoggedOut, (req, res) => {
+
+router.post("/signup", (req, res) => {
+
   const { username, password } = req.body;
 
   // Check that username, email, and password are provided
   if (username === "" || password === "") {
+
     res.status(400).render("auth/signup", {
       errorMessage:
-        "All fields are mandatory. Please provide your username, email and password.",
+        "Todos los campos son obligatorios!",
+    });
+
+    return;
+  }
+
+  if (password != req.body.passwordRepeat) {
+
+    res.status(400).render("auth/signup", {
+      errorMessage:
+        "Contraseñas no coincidentes.",
     });
 
     return;
@@ -36,7 +50,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   if (password.length < 6) {
     res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+      errorMessage: "La contraseña debe contener al menos 6 carácteres!",
     });
 
     return;
@@ -72,7 +86,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       } else if (error.code === 11000) {
         res.status(500).render("auth/signup", {
           errorMessage:
-            "Username and email need to be unique. Provide a valid username or email.",
+            "Este nombre de usuario ya está en uso, elige otro!",
         });
       } else {
         next(error);
@@ -81,19 +95,19 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 // GET /auth/login
-router.get("/", isLoggedOut, (req, res) => {
+router.get("/", (req, res) => {
   res.render("index");
 });
 
 // POST /auth/
-router.post("/", isLoggedOut, (req, res, next) => {
+router.post("/", (req, res, next) => {
   const { username, password } = req.body;
 
   // Check that username, email, and password are provided
   if (username === "" || password === "") {
     res.status(400).render("index", {
       errorMessage:
-        "All fields are mandatory. Please provide username, email and password.",
+        "Rellene todos los campos, por favor!",
     });
 
     return;
@@ -103,7 +117,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
   // - either length based parameters or we check the strength of a password
   if (password.length < 6) {
     return res.status(400).render("index", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+      errorMessage: "La contraseña debe contener al menos 6 carácteres!",
     });
   }
 
@@ -114,7 +128,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
       if (!user) {
         res
           .status(400)
-          .render("index", { errorMessage: "Wrong credentials." });
+          .render("index", { errorMessage: "Credenciales incorrectas!" });
         return;
       }
 
@@ -125,7 +139,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
           if (!isSamePassword) {
             res
               .status(400)
-              .render("index", { errorMessage: "Wrong credentials." });
+              .render("index", { errorMessage: "Credenciales incorrectas!" });
             return;
           }
 
@@ -142,7 +156,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
 });
 
 // GET /auth/logout
-router.get("/logout", isLoggedIn, (req, res) => {
+router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       res.status(500).render("auth/logout", { errorMessage: err.message });
