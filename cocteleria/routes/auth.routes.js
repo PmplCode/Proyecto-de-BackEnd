@@ -78,7 +78,7 @@ router.post("/signup", (req, res) => {
       return User.create({ username, password: hashedPassword });
     })
     .then((user) => {
-      res.redirect("/profile");
+      res.redirect("/profile");   
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -125,6 +125,7 @@ router.post("/", (req, res, next) => {
   User.findOne({ username })
     .then((user) => {
       // If the user isn't found, send an error message that user provided wrong credentials
+      console.log("proba user: ", user);
       if (!user) {
         res
           .status(400)
@@ -148,7 +149,7 @@ router.post("/", (req, res, next) => {
           // Remove the password field
           delete req.session.currentUser.password;
 
-          res.redirect("/profile");
+          res.redirect("/profile");    // cambiare /profile ----> /profile/:username
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -159,7 +160,7 @@ router.post("/", (req, res, next) => {
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      res.status(500).render("auth/logout", { errorMessage: err.message });
+      res.status(500).render("auth/logout", { errorMessage: err.message });  
       return;
     }
 

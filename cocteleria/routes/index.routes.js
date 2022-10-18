@@ -23,10 +23,13 @@ router.get("/principal", (req, res, next) => {
     console.log("error render principal: ", err)
   })
 });
-
+//// Josep Treballant......
 router.get("/profile", (req, res, next) => {
-  res.render("profile");
+  const user = req.session.currentUser.username
+  console.log("aaaa :",user)
+  res.render("profile",{user:user});
 });
+// No tocar
 
 router.get("/crear", (req, res, next) => {
   res.render("crear")
