@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const capitalize = require("../utils/capitalize");
+
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
@@ -49,8 +51,9 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
 router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
   const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
   console.log("req.file", req.file);
+  const paraulaAlcohol = capitalize(alcohol)
   
-  Coctel.create({ name, alcohol, ingredientes, procedimiento, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
+  Coctel.create({ name, alcohol: paraulaAlcohol, ingredientes, procedimiento, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
     .then(newlyCreatedCoctelFromDB => {
         console.log("newlyCreatedCoctelFromDB: ", newlyCreatedCoctelFromDB);
     
@@ -78,6 +81,19 @@ router.get("/logout", isLoggedIn, (req, res, next) => {
   res.redirect("/")
 })
 
-
+router.get("/search", isLoggedIn, (req, res, next) => {
+  console.log("req.query search: ", req.query.alcohol)
+  const paraula = capitalize(req.query.alcohol)
+  const filtre = { alcohol: {$regex : `.*${paraula}.*`}};
+  console.log("filtre regex: ", filtre)
+  Coctel.find(filtre)
+  .then(resp => {
+    const data = { 
+      coctel: resp,
+      usuari: req.session.currentUser
+    }
+    res.render("principal", data);
+  })
+})
 
 module.exports = router;
