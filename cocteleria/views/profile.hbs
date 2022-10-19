@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{user}}</a>
+        <a class="navbar-brand" href="#">{{user.username}}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -44,8 +44,18 @@
     </div>
 </nav>
 <h1>profile</h1>
-<h2>Cocteles de {{user}}</h2>
+<h2>Cocteles de {{user.username}}</h2>
 
+ <form action="/profile" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+            <label>Sube tu imagen:
+                <input type="file" name="perfil-cover-image" class="form-control-file" />
+            </label>
+
+    </div>   
+    <button type="submit" class="btn btn-primary">Sube tu creación</button>
+</form>
+<img src="{{user.fotoPerfil}}" alt="que te den" class="rounded-circle" name="perfil-cover-image">
 
 {{#each coctelUser}}
         <div class="col-3 m-1" style="background-color: rgba(223, 223, 222, 0.5)">
@@ -61,3 +71,5 @@
     <p><strong>Ingredientes: </strong>{{ingredientes}}</p> --}}
     {{!-- ... Toda la info de cada Coctel --}}
 {{/each}}
+
+

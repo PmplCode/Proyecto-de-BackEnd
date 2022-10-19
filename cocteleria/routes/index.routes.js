@@ -37,21 +37,34 @@ router.get("/principal", isLoggedIn, (req, res, next) => {
 });
 
 
-router.get("/profile",isLoggedIn, (req, res, next) => {
-  const user = req.session.currentUser.username
-  const userId = req.session.currentUser._id
-  console.log("aaaa :",user)
+router.get("/profile",isLoggedIn, fileUploader.single("perfil-cover-image"), (req, res, next) => {
+  const user = req.session.currentUser
+  const userId = req.session.currentUser._id;
+  const userImg = req.session.currentUser.fotoPerfil;
+  console.log("USERRRRR :",req.session.currentUser)
   Coctel.find({creador: userId})
   .then(results =>{
     const dady = {
       coctelUser: results,
-      user:user
+      user:req.session.currentUser
     }
     console.log("proba based: ",results)
     res.render("profile",dady);
   })
-
 });
+
+
+
+router.post("/profile", isLoggedIn, fileUploader.single("perfil-cover-image"), (req, res, next)=>{
+  req.session.currentUser.fotoPerfil= req.file.path
+  User.findByIdAndUpdate(req.session.currentUser._id,{fotoPerfil:req.file.path})
+  .then(result =>{
+    res.redirect("/profile")
+  })
+  .catch(err=>{
+    console.log("error actualitzar foto perfil: ",err)
+  })
+})
 
 
 router.get("/crear", isLoggedIn, (req, res, next) => {
