@@ -149,7 +149,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
 
           req.session.currentUser = user;
           console.log("req.session.currentUser - login: ",req.session.currentUser)
-          res.redirect("/profile");
+          res.redirect("/profile/"+req.session.currentUser._id);
 
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
@@ -158,15 +158,15 @@ router.post("/", isLoggedOut, (req, res, next) => {
 });
 
 // GET /auth/logout
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      res.status(500).render("auth/logout", { errorMessage: err.message });  
-      return;
-    }
+// router.get("/logout", isLoggedIn, (req, res) => {
+//   req.session.destroy((err) => {
+//     if (err) {
+//       res.status(500).render("auth/logout", { errorMessage: err.message });  
+//       return;
+//     }
 
-    res.redirect("/");
-  });
-});
+//     res.redirect("/");
+//   });
+// });
 
 module.exports = router;
