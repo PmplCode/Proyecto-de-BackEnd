@@ -79,7 +79,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
       req.session.currentUser = user;
       console.log("req.session.currentUser - registre: ",req.session.currentUser)
-      res.redirect("/profile");
+      res.redirect("/principal");
 
     })
     .catch((error) => {
