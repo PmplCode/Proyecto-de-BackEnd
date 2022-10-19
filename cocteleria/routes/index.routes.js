@@ -59,7 +59,7 @@ router.post("/editarPerfil", isLoggedIn, fileUploader.single("perfil-cover-image
   .then(userEditedFromDB => {
     console.log("userEditedFromDB: ", userEditedFromDB);
     
-    res.redirect("/profile")
+    res.redirect("/profile/"+req.session.currentUser._id)
   })
   .catch(err=>{
     console.log("error actualitzar foto perfil: ",err)
@@ -220,7 +220,8 @@ router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
 })
 
 
-  router.post("/delete/:coctelId", isLoggedIn, (req,res)=>{
+router.post("/delete/:coctelId", isLoggedIn, (req, res) => {
+  console.log("req.params.coctelId testeo: ", req.params.coctelId);
   
   Coctel.findByIdAndDelete(req.params.coctelId)
    .then(() => {
