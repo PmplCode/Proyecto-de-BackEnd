@@ -7,7 +7,7 @@ const coctelSchema = new Schema(
       require: true
     },
     alcohol:{
-      type: String
+      type: [String]
       // enum:["Whisky", "Vodka", "Tequila", "Ron", "Ginebra", "Pisco", "Orujo","Brandy", "Coñac", "Cointreau", "Licor de grosella", "Champagne", "Cava","Vermut","Vino", "Licor de fruta"]
     },
     ingredientes: String,

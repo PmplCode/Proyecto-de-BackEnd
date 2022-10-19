@@ -42,31 +42,43 @@
 <div id="signin">
     <form action="/crear" method="POST" enctype="multipart/form-data">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Nombre del cocktail" name="name">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nombre del cocktail" name="name" autocomplete="off">
             <label for="floatingInput">Nombre del cocktail</label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Alcohol" name="alcohol">
-            <label for="floatingPassword">Alcohol</label>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Alcohol Principal</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Alcohol Secundario</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" autocomplete="off" class="form-control" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Otro Alcohol</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Otro Alcohol</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Ingredientes"
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Ingredientes"
                 name="ingredientes">
             <label for="floatingPassword"> Ingredientes</label>
         </div>
 <div class="form-group">
     <label>Procedimiento
-        <textarea name="procedimiento" cols="30" rows="4" class="form-control"></textarea>
+        <textarea name="procedimiento" cols="30" rows="4" class="form-control" autocomplete="off"></textarea>
     </label>
 </div>
 <div class="form-group">
     <label>Descripción
-        <textarea name="descripcion" cols="30" rows="4" class="form-control"></textarea>
+        <textarea name="descripcion" autocomplete="off" cols="30" rows="4" class="form-control"></textarea>
     </label>
 </div>
 <div class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingInput" name="origen">
-    <label for="floatingInput">Origen</label>
+    <label for="floatingInput" autocomplete="off">Origen</label>
 </div>
 <label for="customRange1" class="form-label">Nivel de dificultad</label>
 <input type="range" class="form-range" id="customRange1" name="puntuacion">

@@ -11,6 +11,7 @@ const Coctel = require("../models/Coctel.model");
 const fileUploader = require('../config/cloudinary.config');
 
 const path = require("path");
+const { handlebars } = require('hbs');
 
 
 
@@ -50,10 +51,17 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
 
 router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
   const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
-  console.log("req.file", req.file);
-  const paraulaAlcohol = capitalize(alcohol)
-  
-  Coctel.create({ name, alcohol: paraulaAlcohol, ingredientes, procedimiento, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
+  console.log("req.body", req.body);
+  // const elAlcohol = capitalize(alcohol)
+
+  let paraules = [];
+
+  alcohol.forEach((paraula, k) => {
+    if(paraula.length > 0)
+    paraules.push(capitalize(paraula))
+  })
+  console.log("paraules: ", paraules)
+  Coctel.create({ name, alcohol: paraules, ingredientes, procedimiento, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
     .then(newlyCreatedCoctelFromDB => {
         console.log("newlyCreatedCoctelFromDB: ", newlyCreatedCoctelFromDB);
     
@@ -82,15 +90,20 @@ router.get("/logout", isLoggedIn, (req, res, next) => {
 })
 
 router.get("/search", isLoggedIn, (req, res, next) => {
+
   console.log("req.query search: ", req.query.alcohol)
+
   const paraula = capitalize(req.query.alcohol)
-  const filtre = { alcohol: {$regex : `.*${paraula}.*`}};
+
+  const filtre = { alcohol: {$regex : `${paraula}`}};
   console.log("filtre regex: ", filtre)
+
   Coctel.find(filtre)
   .then(resp => {
     const data = { 
       coctel: resp,
-      usuari: req.session.currentUser
+      usuari: req.session.currentUser,
+      palab: req.query
     }
     res.render("principal", data);
   })
