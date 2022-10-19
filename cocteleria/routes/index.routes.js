@@ -59,7 +59,7 @@ router.post("/editarPerfil", isLoggedIn, fileUploader.single("perfil-cover-image
   .then(userEditedFromDB => {
     console.log("userEditedFromDB: ", userEditedFromDB);
     
-    res.redirect("/profile")
+    res.redirect("/profile/"+req.session.currentUser._id)
   })
   .catch(err=>{
     console.log("error actualitzar foto perfil: ",err)
@@ -108,7 +108,7 @@ router.get("/search", isLoggedIn, (req, res, next) => {
     .then(resp => {
       const data = { 
         coctel: resp,
-        usuari: req.session.currentUser,
+        usuario: req.session.currentUser,
         palab: req.query
       }
       res.render("principal", data);
@@ -135,6 +135,7 @@ router.get("/profile/:idUser", isLoggedIn, (req, res, next) => {
         coctelUser: results,
         usuario: req.session.currentUser
       }
+      console.log("results profile: ", results)
       
       if (req.session.currentUser._id == userId) {
         data.user = req.session.currentUser
@@ -145,18 +146,19 @@ router.get("/profile/:idUser", isLoggedIn, (req, res, next) => {
 
 });
 
-router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
-  const coctelId = req.params.coctelId
-  Coctel.findById(coctelId)
-  .populate("creador")
-  .then(result => {
-    const data = {
-      coctel: result,
-      usuario: req.session.currentUser
-    }
-    res.render("informacion", data)
-  })
-})
+//NO FA RES, PEL QUE SEMBLA, ESPERAR A BORRAR!!!!
+// router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
+//   const coctelId = req.params.coctelId
+//   Coctel.findById(coctelId)
+//   .populate("creador")
+//   .then(result => {
+//     const data = {
+//       coctel: result,
+//       usuario: req.session.currentUser
+//     }
+//     res.render("informacion", data)
+//   })
+// })
 
 
 router.get("/informacion/:coctelId/edit", isLoggedIn, (req, res, next) => {
@@ -217,11 +219,14 @@ router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
 
     res.render("informacion", data)
   })
+  .catch(err => {
+    console.log("err: ", err)
+  })
 })
 
 
   router.post("/delete/:coctelId", isLoggedIn, (req,res)=>{
-  
+  console.log("req.params.coctelId: ", req.params.coctelId)
   Coctel.findByIdAndDelete(req.params.coctelId)
    .then(() => {
     res.redirect("/profile/" + req.session.currentUser._id)

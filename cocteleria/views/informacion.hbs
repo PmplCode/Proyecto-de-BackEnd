@@ -24,10 +24,15 @@
                 <a href="/profile/{{creador._id}}">{{creador.username}}</a>
                 {{!-- <p class="card-text"><small class="text-muted">{{creador.username}}</small></p> --}}
             </div>
-        </div>
         {{/with}}
         {{#if esCreador}}
         <a href="/informacion/{{coctel._id}}/edit" class="btn btn-primary">Editar cóctel</a>
+        <div class="modal-footer">
+                    <form action="/delete/{{coctel._id}}" method="post">
+                        <button type="submit" class="btn btn-primary">Eliminar definitivamente</button>
+                    </form>
+                </div>
         {{/if}}
+        </div>
     </div>
 </div>
