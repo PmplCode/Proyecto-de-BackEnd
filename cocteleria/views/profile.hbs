@@ -22,44 +22,15 @@
             <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel">
             <div class="card-body">
                 <h5 class="card-title"> {{name}}</h5>
-                <a href="informacion/{{_id}}" class="btn btn-primary">Más información</a>
-      
+
+                <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>
 
 
-                {{!-- començém a treballar --}}
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Eliminar
-                </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">¿Está seguro?</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Los cócteles eliminados no podrá recuperarlos
-                            </div>
-                            <div class="modal-footer">
-                                <form action="/delete/{{_id}}" method="post">
-                                    <button type="submit" class="btn btn-primary">Eliminar definitivamente</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                
             </div>
         </div>
-                {{/each}}
-
-
-
+        {{/each}}
     </div>
 </div>
 
