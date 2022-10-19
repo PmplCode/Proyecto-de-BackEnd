@@ -55,7 +55,7 @@
     </div>   
     <button type="submit" class="btn btn-primary">Sube tu creación</button>
 </form>
-<img src="{{user.fotoPerfil}}" alt="que te den" class="rounded-circle" name="perfil-cover-image">
+<img src="{{user.fotoPerfil}}" alt="foto perfil" class="rounded-circle" name="perfil-cover-image">
 
 {{#each coctelUser}}
         <div class="col-3 m-1" style="background-color: rgba(223, 223, 222, 0.5)">
@@ -63,13 +63,37 @@
 
             <div class="card-body">
 
-    <h5 class="card-title"> {{name}}</h5>
-    <a href="informacion/{{_id}}" class="btn btn-primary">Más información</a>
+            <h5 class="card-title"> {{name}}</h5>
+            <a href="informacion/{{_id}}" class="btn btn-primary">Más información</a>
+            {{!-- començém a treballar --}}
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Delete
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Esta seguro?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Los cocteles eliminados no podra recuperarlos
+      </div>
+      <div class="modal-footer">
+        <form action="/delete/{{_id}}" method="post">
+      <button type="submit" class="btn btn-primary" >Delete</button>
+      </form>
+      </div>
     </div>
+  </div>
 </div>
-    {{!-- <p><strong>Alcohol: </strong>{{alcohol}}</p>
-    <p><strong>Ingredientes: </strong>{{ingredientes}}</p> --}}
-    {{!-- ... Toda la info de cada Coctel --}}
+            {{!--  --}}
+            </div>
+        </div>
+    
 {{/each}}
 
 

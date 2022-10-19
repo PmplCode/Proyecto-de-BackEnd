@@ -43,6 +43,7 @@ router.get("/profile",isLoggedIn, fileUploader.single("perfil-cover-image"), (re
   const userId = req.session.currentUser._id;
   const userImg = req.session.currentUser.fotoPerfil;
   console.log("USERRRRR :",req.session.currentUser)
+  
   Coctel.find({creador: userId})
   .then(results =>{
     const dady = {
@@ -53,11 +54,28 @@ router.get("/profile",isLoggedIn, fileUploader.single("perfil-cover-image"), (re
     res.render("profile",dady);
   })
 });
+//////////
+// router.get("/delete/:coctelId", isLoggedIn, (req,res,next)=>{
+//   res.render("delete")
+// })
+
+router.post("/delete/:coctelId", isLoggedIn, (req,res)=>{
+  
+  Coctel.findByIdAndDelete(req.params.coctelId)
+   .then(() => {
+    res.redirect("/profile")
+   })
+   .catch((error) => console.log(error));
+ })
 
 
 
+
+
+/////////
 router.post("/profile", isLoggedIn, fileUploader.single("perfil-cover-image"), (req, res, next)=>{
-  req.session.currentUser.fotoPerfil= req.file.path
+  req.session.currentUser.fotoPerfil = req.file.path
+  
   User.findByIdAndUpdate(req.session.currentUser._id,{fotoPerfil:req.file.path})
   .then(result =>{
     res.redirect("/profile")
@@ -65,7 +83,9 @@ router.post("/profile", isLoggedIn, fileUploader.single("perfil-cover-image"), (
   .catch(err=>{
     console.log("error actualitzar foto perfil: ",err)
   })
+  
 })
+
 
 
 router.get("/crear", isLoggedIn, (req, res, next) => {
