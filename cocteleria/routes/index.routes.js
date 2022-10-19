@@ -31,7 +31,6 @@ router.get("/principal", isLoggedIn, (req, res, next) => {
       usuario: req.session.currentUser
     }
    
-    
     console.log("req.session.currentUser - principal: ", req.session.currentUser)
     res.render("principal", data);
   })
@@ -74,6 +73,7 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
   }
   res.render("crear", data)
 })
+
 
 router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
   const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
@@ -159,7 +159,15 @@ router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
 })
 
   
+  router.post("/delete/:coctelId", isLoggedIn, (req,res)=>{
   
+  Coctel.findByIdAndDelete(req.params.coctelId)
+   .then(() => {
+    res.redirect("/profile/" + req.session.currentUser._id)
+   })
+   .catch((error) => console.log(error));
+ })
+
 
 
 
