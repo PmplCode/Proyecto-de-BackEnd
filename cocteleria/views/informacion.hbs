@@ -26,5 +26,8 @@
             </div>
         </div>
         {{/with}}
+        {{#if esCreador}}
+        <a href="/informacion/{{coctel._id}}/edit" class="btn btn-primary">Editar cóctel</a>
+        {{/if}}
     </div>
 </div>

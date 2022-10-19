@@ -158,7 +158,68 @@ router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
   })
 })
 
-  
+
+router.get("/informacion/:coctelId/edit", isLoggedIn, (req, res, next) => {
+  Coctel.findById(req.params.coctelId)
+    .populate("creador")
+    .then(result => {
+      console.log("resultado entar editar: ", result)
+      const data = {
+      coctel: result
+    }
+    res.render("editCoctel", data)
+  })
+})
+
+router.post("/informacion/:coctelId/edit", isLoggedIn, (req, res, next) => {
+  console.log("req.body edit: ", req.body)
+
+  const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
+ 
+  let paraules = [];
+
+  alcohol.forEach((paraula) => {
+    if(paraula.length > 0)
+    paraules.push(capitalize(paraula))
+  })
+
+  Coctel.findByIdAndUpdate(req.params.coctelId, {name, alcohol: paraules, ingredientes, procedimiento, descripcion, origen}, {new: true})
+  .then(resp => {
+    res.redirect("/informacion/"+req.params.coctelId)
+  })
+  .catch(err => {
+    console.log("err: ", err)
+  })
+})
+
+router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
+  const coctelId = req.params.coctelId
+  Coctel.findById(coctelId)
+    .populate("creador")
+    .then(result => {
+      console.log("result ", result)
+      console.log("req.session.currentUser._id ", req.session.currentUser._id)
+      console.log("result.creador._id ", result.creador._id)
+
+
+      const data = {
+        coctel: result,
+        usuario: req.session.currentUser
+      }
+
+      // if(`new ObjectId("${req.session.currentUser._id}")` == `result.creador._id`) {
+      //   data.esCreador = true;
+      // }
+      let whatever = `${result.creador._id}`
+      if(whatever.includes(req.session.currentUser._id)){
+        data.esCreador = true;
+      }
+
+    res.render("informacion", data)
+  })
+})
+
+
   router.post("/delete/:coctelId", isLoggedIn, (req,res)=>{
   
   Coctel.findByIdAndDelete(req.params.coctelId)
@@ -167,9 +228,6 @@ router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
    })
    .catch((error) => console.log(error));
  })
-
-
-
-
   
   module.exports = router;
+
