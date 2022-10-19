@@ -9,7 +9,7 @@ const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://localhost/cocteleria";
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(MONGO_URI)
   .then((x) => {
     const databaseName = x.connections[0].name;
     console.log(`Connected to Mongo! Database name: "${databaseName}"`);
