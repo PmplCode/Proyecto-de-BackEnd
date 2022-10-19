@@ -1,0 +1,47 @@
+<div id="signin">
+    <form action="/informacion/{{coctel._id}}/edit" method="POST">
+        <div class="form mb-3">
+            <label for="floatingInput">Nombre del cocktail</label>
+            <input type="text" class="form-control" value="{{coctel.name}}" name="name" autocomplete="off">
+        </div>
+        {{#each coctel.alcohol}}
+            <div class="mb-3 w-20 d-inline-block">
+            <label for="floatingPassword">Alcohol</label>
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" value="{{this}}" name="alcohol">
+        </div>
+        {{/each}}
+        <div class="mb-3 w-20 d-inline-block">
+            <label for="floatingPassword">Alcohol Secundario</label>
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+        </div>
+        <div class="mb-3 w-20 d-inline-block">
+            <label for="floatingPassword">Otro Alcohol</label>
+            <input type="text" autocomplete="off" class="form-control" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+        </div>
+        <div class="mb-3 w-20 d-inline-block">
+            <label for="floatingPassword">Otro Alcohol</label>
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+        </div>
+        <div class="mb-3">
+            <label for="floatingPassword"> Ingredientes</label>
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" value="{{coctel.ingredientes}}" name="ingredientes">
+        </div>
+        <div class="mb-3">
+            <label>Procedimiento
+            </label>
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" value="{{coctel.procedimiento}}" name="procedimiento">
+        </div>
+        <div class="mb-3">
+            <label>Descripción
+            </label>
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" value="{{coctel.descripcion}}" name="descripcion">
+        </div>
+        <div class="mb-3">
+            <label>Origen
+            </label>
+            <input type="text" class="form-control w-25" autocomplete="off" id="floatingPassword" value="{{coctel.origen}}" name="origen">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Editar cambios</button>
+    </form>
+</div>
