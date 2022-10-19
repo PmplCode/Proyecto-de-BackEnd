@@ -225,8 +225,10 @@ router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {
 })
 
 
+
   router.post("/delete/:coctelId", isLoggedIn, (req,res)=>{
   console.log("req.params.coctelId: ", req.params.coctelId)
+
   Coctel.findByIdAndDelete(req.params.coctelId)
    .then(() => {
     res.redirect("/profile/" + req.session.currentUser._id)
