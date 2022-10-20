@@ -5,6 +5,8 @@ const capitalize = require("../utils/capitalize");
 
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isPremium = require("../middleware/isPremium");
+
 
 const User = require("../models/User.model");
 const Coctel = require("../models/Coctel.model");
@@ -39,7 +41,13 @@ router.get("/principal", isLoggedIn, (req, res, next) => {
   })
 });
 
-
+router.get("/premium", isLoggedIn, isPremium, (req,res,next) => {
+  const key = {
+    key1: process.env.MAPS
+  }
+  console.log("key; ", key)
+  res.render("./auth/premium", key)
+})
 
 router.get("/editarPerfil", (req, res, next) => {
   const data = { 
@@ -174,24 +182,33 @@ router.get("/informacion/:coctelId/edit", isLoggedIn, (req, res, next) => {
 })
 
 router.post("/informacion/:coctelId/edit", isLoggedIn, (req, res, next) => {
-  console.log("req.body edit: ", req.body)
+  const coctelId = req.params.coctelId
+  Coctel.findById(coctelId)
+    .populate("creador")
+    .then(result => {
+    let whatever = `${result.creador._id}`
+    if(whatever.includes(req.session.currentUser._id)){
+    console.log("req.body edit: ", req.body)
 
-  const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
- 
-  let paraules = [];
+    const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
+  
+    let paraules = [];
 
-  alcohol.forEach((paraula) => {
-    if(paraula.length > 0)
-    paraules.push(capitalize(paraula))
-  })
+    alcohol.forEach((paraula) => {
+      if(paraula.length > 0)
+      paraules.push(capitalize(paraula))
+    })
 
-  Coctel.findByIdAndUpdate(req.params.coctelId, {name, alcohol: paraules, ingredientes, procedimiento, descripcion, origen}, {new: true})
-  .then(resp => {
-    res.redirect("/informacion/"+req.params.coctelId)
-  })
-  .catch(err => {
-    console.log("err: ", err)
-  })
+    Coctel.findByIdAndUpdate(req.params.coctelId, {name, alcohol: paraules, ingredientes, procedimiento, descripcion, origen}, {new: true})
+    .then(resp => {
+      return res.redirect("/informacion/"+req.params.coctelId)
+    })
+    .catch(err => {
+      return console.log("err: ", err)
+    })
+    } else {
+    return res.redirect("/principal")
+  }})
 })
 
 router.get("/informacion/:coctelId", isLoggedIn, (req, res, next) => {

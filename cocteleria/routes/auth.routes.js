@@ -16,6 +16,8 @@ const Coctel = require("../models/Coctel.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+const isPremium = require("../middleware/isPremium");
+
 // GET /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
@@ -25,7 +27,14 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, password } = req.body;
 
-  // Check that username, email, and password are provided
+  let premiumCheck = false;
+
+  const arrayPremium = ["jaja", "coctel"];
+  if(arrayPremium.includes(`${req.body.isPremium}`)){
+    premiumCheck = true;
+  }
+
+  // Check usuario y contraseñas se pasan
   if (username === "" || password === "") {
 
     res.status(400).render("auth/signup", {
@@ -67,13 +76,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
   */
 
-  // Create a new user - start by hashing the password
   bcrypt
     .genSalt(saltRounds)
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
-      // Create a user and save it in the database
-      return User.create({ username, password: hashedPassword });
+      return User.create({ username, password: hashedPassword, isPremium: premiumCheck});
     })
     .then((user) => {
 

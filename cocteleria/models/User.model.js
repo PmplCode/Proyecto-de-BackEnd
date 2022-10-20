@@ -16,6 +16,9 @@ const userSchema = new Schema(
     fotoPerfil: {
       type: String,
       default: "https://c1.alamy.com/thumbs/2fntnx5/icono-de-perfil-de-messenger-sobre-fondo-blanco-aislado-ilustracion-2fntnx5.jpg"
+    },
+    isPremium: {
+      type: Boolean,
     }
   },
   {

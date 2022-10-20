@@ -21,9 +21,13 @@
                 <p class="card-text">{{descripcion}}</p>
                 <p class="card-text">{{origen}}</p>
                 
-                <a href="/profile/{{creador._id}}">{{creador.username}}</a>
+                <a href="/profile/{{creador._id}}">{{creador.username}}</a><br><br>
                 {{!-- <p class="card-text"><small class="text-muted">{{creador.username}}</small></p> --}}
+            <a href="/premium">Ver la localización de Coctelerías</a><p>Si no eres Premium, no podrás acceder.</p>
             </div>
+            <form>
+                <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
+            </form>
         {{/with}}
         {{#if esCreador}}
         <a href="/informacion/{{coctel._id}}/edit" class="btn btn-primary">Editar cóctel</a>
@@ -32,7 +36,7 @@
                         <button type="submit" class="btn btn-primary">Eliminar definitivamente</button>
                     </form>
                 </div>
-        {{/if}}
         </div>
+        {{/if}}
     </div>
 </div>
