@@ -1,15 +1,22 @@
 {{> header usuario}}
 
+<body id="bodyprincipal">
+    
 
-<div class="card mb-3" style="width = 90 vw;">
-    <div class="row g-0">
+<div class="card mb-3" style="width = 90 vw; background-color: rgb(30, 29, 26); margin: 3% 10%;" id="cocteles">
+    <div class="row g-0" >
         {{#with coctel}}
         <div class="col-md-4">
-            <img src="{{imageUrl}}" class="img-fluid rounded-start" alt="Imagen del cóctel" style="height: 40vh;">
+            <img src="{{imageUrl}}" class="img-fluid rounded-start" alt="Imagen del cóctel" >
         </div>
         <div class="col-md-8">
-            <div class="card-body">
-                <h2 class="card-title">{{name}}</h2>
+            <div class="card-title">
+                <div id="titulo" >
+                    <div id="titulo2">
+                    </div>
+                    <h1>{{name}}</h1>
+                </div>
+              
                 <h4 class="card-title">Ingredientes:</h4>
                 <p class="card-text">{{alcohol}}</p>
                 <p class="card-text">{{ingredientes}}</p>
@@ -40,3 +47,4 @@
         {{/if}}
     </div>
 </div>
+</body>
