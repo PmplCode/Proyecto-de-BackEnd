@@ -1,3 +1,6 @@
+<body id="signupbody">
+
+
 <div id="signin">
   <form action="/auth/signup" method="POST">
     {{#if errorMessage}}
@@ -17,9 +20,13 @@
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="passwordRepeat">
       <label for="floatingPassword">Repetir contraseña</label>
     </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingPassword" placeholder=" " name="isPremium">
+      <label for="floatingPassword">¿Tienes código premium? ¡Ponlo aquí!</label>
+    </div>
     <button type="submit" class="btn btn-primary">Registrarse</button>
   </form>
 </div> 
-{{!-- fotos usuari --}}
+</body>
 
 
