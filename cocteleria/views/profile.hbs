@@ -2,40 +2,39 @@
 
 
        
-    <div id="bodyPerf">
-        <div class="card" style="width: 18rem;">
-            <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto d'usuari">
-            <div class="card-body" id="cartaPerfil">
-                <h5 class="card-title" id="descrUser">{{user.username}}</h5>
-                <p class="card-text" id="nomUser">{{user.descripcion}}</p>
-                <div id="testeo"></div>
-            </div>
-            
-                
-            
+<div id="bodyPerf">
+    <div class="card" style="width: 18rem;">
+        <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto d'usuari">
+        <div class="card-body" id="cartaPerfil">
+            <h5 class="card-title" id="descrUser">{{user.username}}</h5>
+            <p class="card-text" id="nomUser">{{user.descripcion}}</p>
+            <div id="testeo"></div>
         </div>
-        <div class="container text-center" id="cartelera">
-            <div class="row" id="cartComp">
-                {{#each coctelUser}}
-                <div class="col-3 m-1" style="background-color: rgba(77, 76, 74, 0.5)" id="casellaCoc">
-                    <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel" id="fotoCoc">
-                    <div class="card-body" id="infCub">
-                        <h5 class="card-title" id="titolCub"> {{name}}</h5>
+        
+            
+        
+    </div>
+    <div class="container text-center" id="cartelera">
+        <div class="row" id="cartComp">
+            {{#each coctelUser}}
+            <div class="col m-1" style="background-color: rgba(77, 76, 74, 0.5)" id="casellaCoc">
+                <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel" id="fotoCoc">
+                <div class="card-body" id="infCub">
+                    <h5 class="card-title" id="titolCub"> {{name}}</h5>
 
-                        <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>    
-                    </div>
+                    <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>    
                 </div>
-                {{/each}}
-
             </div>
+            {{/each}}
+
         </div>
     </div>
-
     <form>
         <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
     </form>
 </div>
 
+    
 
 {{!-- fins aqui n omnes has ficat un div amb id blocProfa --}}
 

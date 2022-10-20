@@ -13,14 +13,14 @@
 
 
 <div class="container text-center" id="cocteles" >
-    <div class="row" id="contenedor">
+    <div class="row align-items-start justify-content-around" id="contenedor">
         {{#each coctel}}
         <div class="col-3 m-2" style=" background-color: rgba(77, 76, 74, 0.5)" id="coctel">
-            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel">
-            <div class="card-body">
+            <img src="{{imageUrl}}" class="" alt="Imagen del cóctel">
+            {{!-- <div class="card-body"> --}}
                 <h4 class="card-title"> {{name}}</h4>
-                <a href="informacion/{{_id}}" class="btn ">Más información</a>
-            </div>
+                <a href="informacion/{{_id}}" class="mt-5 mb-3 btn ">Más Información</a>
+            {{!-- </div> --}}
         </div>
 
         {{/each}}
