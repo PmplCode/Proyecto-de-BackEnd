@@ -14,10 +14,6 @@ const coctelSchema = new Schema(
     procedimiento: String,
     descripcion: String,
     origen: String,
-    puntuacion: {
-      type: Number,
-      enum: [1, 2, 3, 4, 5]
-    },
     imageUrl: String,
     creador: {type: Schema.Types.ObjectId, ref: "User"}
   },

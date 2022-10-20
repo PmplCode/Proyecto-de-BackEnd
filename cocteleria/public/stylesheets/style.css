@@ -4,11 +4,147 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* ESTILOS DEL INDEX  */
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&display=swap');
 
-a {
-  color: #00b7ff;
+#indexbody{
+      min-height: 100vh;
+      background-color: #1E1D1A;
+      display: flex;
+      align-items: center;
+      float: right;
+      margin-right: 10%;
 }
 
+#login{
+      display: flex;
+      justify-content: space-between;
+      background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #141414;
+      border-radius: 1em;
+    box-shadow: 0 0 20px black;
+}
+
+
+#indexder{
+  padding: 2em;
+    height: 80vh;
+    width: 30vw;
+      border-radius: 1em;
+    background-color: white;
+
+}
+#indexder h2{
+  margin: 50px 0;
+    font-family: "Vibur", sans-serif;
+}
+#indexder input{
+  margin-bottom: 40px;
+  height: 50px;
+    border-radius: 0em;
+  border: 1px solid white;
+  border-bottom: 2px solid #1E1D1A;
+}
+#indexder button{
+  margin-top: 10px;
+  width: 26vw;
+  background: linear-gradient(to right, #F354FF, #8347E2);
+  border: 1px solid white;
+   
+      color: white;
+
+}
+#indexder p{
+text-align: center;
+}
+#indexder a {
+  text-align: center;
+}
+
+#indexizq{
+  display: flex;
+  height: 80vh;
+    width: 50vw;
+    
+}
+#indexizq h1{
+  -webkit-transform: rotate(-25deg);
+  transform: rotate(-25deg);
+  margin: auto;
+  font-family: 'Qwitcher Grypen', cursive;
+  font-size: 200px;
+  text-align:center;
+  border: 2px solid rgba(238, 30, 242, 0.78);
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  color: rgba(202, 228, 225, 0.92);
+  text-shadow: 2px 2px 20px white;
+
+        animation: neon .1s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+  from {
+    box-shadow:
+      0 0 4px rgba(202, 228, 225, 0.92),
+      0 0 10px rgba(202, 228, 225, 0.34),
+      0 0 6px rgba(238, 30, 242, 0.52),
+      0 0 7px rgba(231, 30, 242, 0.92),
+      0 0 13px rgba(238, 30, 242, 0.78),
+      0 0 20px rgba(255, 62, 239, 0.92);
+  }
+
+  to {
+    box-shadow:
+      0 0 4px rgba(202, 228, 225, 0.98),
+      0 0 10px rgba(202, 228, 225, 0.42),
+      0 0 6px rgba(238,30,242, 0.58),
+      0 0 9px rgba(231, 30, 242, 0.84),
+      0 0 10px rgba(238, 30, 242, 0.88),
+      0 0 15px rgba(255, 62, 239, 1);
+  }
+}
+/* @keyframes neon {
+  from {
+    box-shadow:
+      0 0 4px rgba(202, 228, 225, 0.92),
+      0 0 10px rgba(202, 228, 225, 0.34),
+      0 0 6px rgba(242, 231, 30, 0.52),
+      0 0 7px rgba(231, 242, 30, 0.92),
+      0 0 10px rgba(242, 238, 30, 0.78),
+      0 0 15px rgba(255, 252, 62, 0.92);
+  }
+
+  to {
+    box-shadow:
+      0 0 4px rgba(202, 228, 225, 0.98),
+      0 0 10px rgba(202, 228, 225, 0.42),
+      0 0 6px rgba(242, 231, 30, 0.58),
+      0 0 9px rgba(231, 242, 30, 0.84),
+      0 0 8px rgba(242, 238, 30, 0.88),
+      0 0 10px rgba(255, 252, 62, 1);
+  }
+} */
+
+#redesociales svg{
+  color: #1E1D1A;
+  width: 25px;
+  height: 25px;
+}
+
+/* ESTILOS DE LA BARRA DE NAVEGACIÓN  */
 #navbar{
   width: 100vw;
 }
+
+
+/*ESTILOS DEL PROFILE*/
+
+
+
+
+
