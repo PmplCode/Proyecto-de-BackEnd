@@ -1,14 +1,21 @@
 {{> header usuario}}
 
-
+<body id="cos">
        
-<div id="bodyPerf">
-    <div class="card" style="width: 18rem;">
-        <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto d'usuari">
-        <div class="card-body" id="cartaPerfil">
-            <h5 class="card-title" id="descrUser">{{user.username}}</h5>
-            <p class="card-text" id="nomUser">{{user.descripcion}}</p>
-            <div id="testeo"></div>
+
+
+    <div id="bodyPerf">
+        <div class="card" style="width: 25rem;" id="jCarta">
+            <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto d'usuari">
+            <div class="card-body" id="cartaPerfil">
+                <div id="titulo-b">
+                    <div id="titulo2-b"></div><h1>{{user.username}}</h1>
+                </div>
+                <p class="card-text" id="nomUser">{{user.descripcion}}</p>
+                {{!-- <div id="testeo"></div> --}}
+            </div>
+            
+               
         </div>
         
             
@@ -24,21 +31,22 @@
 
                     <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>    
                 </div>
+
+                {{/each}}
+                
+                    <form>
+                        <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
+                    </form>
+                
+
             </div>
-            {{/each}}
+            
 
         </div>
     </div>
-    <form>
-        <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
-    </form>
-</div>
 
     
 
-{{!-- fins aqui n omnes has ficat un div amb id blocProfa --}}
+</body>
 
-{{!-- a partir de aqui toquem bestia  --}}
-
-{{!-- borrem foto de perfil que teniem --}}
-
+   
