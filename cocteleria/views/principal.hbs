@@ -1,33 +1,42 @@
 {{> header usuario}}
+
+<body id="bodyprincipal">
+    
+<div id="titulo">
+   <div id="titulo2">
+   </div> <h1>COCKTAIL MENU</h1>
+    
+</div>
+
+
+
+
+
+<div class="container text-center" id="cocteles" >
+    <div class="row" id="contenedor">
+        {{#each coctel}}
+        <div class="col-3 m-2" style=" background-color: rgba(77, 76, 74, 0.5)" id="coctel">
+            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel">
+            <div class="card-body">
+                <h4 class="card-title"> {{name}}</h4>
+                <a href="informacion/{{_id}}" class="btn ">Más información</a>
+            </div>
+        </div>
+
+        {{/each}}
+     </div>
+</div> 
+<div id="primeraSeccion">
+
+    {{#if palab}}
+    <h2 id="principalmensaje">Aqui puedes ver todos los cócteles que contengan {{palab.alcohol}}</h2>
+    {{else}}
+    <h2>Aqui puedes ver todos los cócteles</h2>
+    {{/if}}
+</div>
 <form class="d-flex" role="search" action="/search" method="get">
     <input class="form-control me-2" type="search" placeholder="Buscar por alcohol" aria-label="Search"
         autocomplete="off" name="alcohol">
     <button class="btn btn-outline-success" type="submit">Buscar</button>
 </form>
-
-<div id="primeraSeccion">
-
-{{#if palab}}
-<h2 id="principalmensaje">Aqui puedes ver todos los cócteles que contengan {{palab.alcohol}}</h2>
-{{else}}
-<h2>Aqui puedes ver todos los cócteles</h2>
-{{/if}}
-</div>
-
-<div class="container text-center" >
-    <div class="row">
-        {{#each coctel}}
-        <div class="col-3 m-1" style=" background-color: rgba(223, 223, 222, 0.5)">
-            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel">
-            <div class="card-body">
-                <h4 class="card-title"> {{name}}</h4>
-                <a href="informacion/{{_id}}" class="btn btn-primary">Más información</a>
-            </div>
-        </div>
-
-        {{/each}}
-
-
-
-     </div>
-</div> 
+</body>
