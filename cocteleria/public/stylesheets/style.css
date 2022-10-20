@@ -144,7 +144,93 @@ text-align: center;
 
 /*ESTILOS DEL PROFILE*/
 
+#bodyPerf{
+  background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #141414;
+  display: flex;
+
+}
+
+#cartelera{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 4%;
+  margin-bottom: 3%;
+  border-radius: 2em;
+  border: 0.8em double #fff;
+  box-shadow:
+    0 0 5px #fff,
+    0 0 10px rgb(255, 123, 255),
+    0 0 30px rgb(178, 30, 242);
+
+}
+
+
+#ladrillosA {
+  background-color: #1E1D1A;
+  
+}
+
+
+#nomUser{
+  color: white;
+}
+
+#descrUser{
+  color: rgba(238, 30, 242, 0.78);
+}
+
+#fotoCoc{
+height: 450px;
+}
+
+
+#infCub{
+  padding-bottom: 20px;
+}
+#titolCub{
+  color:rgba(238, 30, 242, 0.78) ;
+  margin-bottom: 10px;
+}
+#cartComp{
+  padding-top: 25px;
+  color: white;
+  background-color: rgb(30, 29, 26);
+  justify-content: space-between;
+  border-radius: 2em;
+  box-shadow: 0 0 20px black;
+  /* border: 1px black solid; */
+  padding: 50px;
+  
+}
+
+#cartaPerfil{
+background-color:rgb(30, 29, 26) ;
+
+}
+#testeoKl{
+  background-color: rgb(30, 29, 26);
+}
+
+#testeo{
+  
+  background-color: #8347E2;
+  height: 77%;
+  width: 2%;
+  margin-left: 50%;
+  
+}
 
 
 
+
+
+
+
+
+
+/* Estilos de edit */
 
