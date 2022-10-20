@@ -76,7 +76,7 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
 
 
 router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (req, res) => {
-  const { name, alcohol, ingredientes, procedimiento, descripcion, origen } = req.body;
+  const { name, alcohol, ingredientes, descripcion, origen } = req.body;
   console.log("req.body", req.body);
   // const elAlcohol = capitalize(alcohol)
   
@@ -87,7 +87,7 @@ router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (re
     paraules.push(capitalize(paraula))
   })
   console.log("paraules: ", paraules)
-  Coctel.create({ name, alcohol: paraules, ingredientes, procedimiento, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
+  Coctel.create({ name, alcohol: paraules, ingredientes, descripcion,origen, imageUrl: req.file.path , creador: req.session.currentUser._id})
   .then(newlyCreatedCoctelFromDB => {
     console.log("newlyCreatedCoctelFromDB: ", newlyCreatedCoctelFromDB);
     
