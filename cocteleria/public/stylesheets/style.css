@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  
 }
 
 /* ESTILOS DEL INDEX  */
@@ -36,7 +37,7 @@ body {
   padding: 2em;
     height: 80vh;
     width: 30vw;
-      border-radius: 1em;
+    border-radius: 1em;
     background-color: white;
 
 }
@@ -114,27 +115,7 @@ text-align: center;
       0 0 30px rgba(255, 162,62, 1);
   }
 }
-/* @keyframes neon {
-  from {
-    box-shadow:
-      0 0 4px rgba(202, 228, 225, 0.92),
-      0 0 10px rgba(202, 228, 225, 0.34),
-      0 0 6px rgba(238, 30, 242, 0.52),
-      0 0 7px rgba(231, 30, 242, 0.92),
-      0 0 13px rgba(238, 30, 242, 0.78),
-      0 0 30px rgba(255, 62, 239, 0.92);
-  }
 
-  to {
-    box-shadow:
-      0 0 4px rgba(202, 228, 225, 0.98),
-      0 0 10px rgba(202, 228, 225, 0.42),
-      0 0 6px rgba(238,30,242, 0.58),
-      0 0 9px rgba(231, 30, 242, 0.84),
-      0 0 15px rgba(238, 30, 242, 0.88),
-      0 0 20px rgba(255, 62, 239, 1);
-  }
-} */
 
 #indexizq img{
   position:absolute;
@@ -179,6 +160,7 @@ font-size: 80px;
   }
 }
 
+
 #redesociales svg{
   color: #1E1D1A;
   margin-top: 100px;
@@ -191,13 +173,14 @@ font-size: 80px;
   border-top: 2px solid rgba(202, 228, 225, 0.98) ;
   background-color: #141414;
   padding: 0;
-  width: 100vw;
-  
+  align-items: center;
   color: white;
 }
 #navbar p{
   font-family: 'Qwitcher Grypen', cursive;
   color: white;
+  align-self: center;
+  vertical-align: middle;
 }
 #navbar div{
   background-color: transparent
@@ -235,18 +218,31 @@ font-size: 80px;
   border-bottom: 0.2em double #fff;
 }
 
-
-
+#cos {
+  background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #141414;}
 
 
 
 #bodyPerf{
-background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
+  background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
+  background-size: cover;
   background-position: center;
   background-repeat: repeat;
   background-color: #141414;
-  color: white;
-display: flex;
+
+}
+
+
+#bodyPerf{
+  
+  display: flex;
+  
+
+
 }
 
 #cartelera{
@@ -260,6 +256,7 @@ display: flex;
     0 0 5px #fff,
     0 0 10px rgb(255, 123, 255),
     0 0 30px rgb(178, 30, 242);
+  height: 100%;
 
 }
 
@@ -279,7 +276,7 @@ display: flex;
 }
 
 #fotoCoc{
-height: 450px;
+height: 60%;
 }
 
 
@@ -298,24 +295,83 @@ height: 450px;
   border-radius: 2em;
   box-shadow: 0 0 20px black;
   /* border: 1px black solid; */
-  padding: 50px;
+  padding: 5%;
+  max-height: 100%;
   
 }
 
 #cartaPerfil{
 background-color:rgb(30, 29, 26) ;
 
+
 }
 
 
-#testeo{
+#casellaCoc{
+  border-radius: 2em;
   
-  background-color: #8347E2;
-  height: 77%;
-  width: 2%;
-  margin-left: 50%;
+}  
+
+
+#jCarta{
+  height: 100%;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+#titulo-b{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 5%;
+  margin: auto;
+  width: 80%;
+  font-family: 'Monoton', cursive;
+  text-shadow: 
+  0 0 5px #fff,
+  0 0 10px rgb(138, 23, 139),
+  0 0 15px rgb(238, 30, 242);
+  border-radius: 1em;
+  border: 0.5em double #fff;
+  box-shadow: 
+  0 0 5px #fff,
+    0 0 10px rgb(123, 196, 255),
+    0 0 15px rgb(30, 242, 235);
   
 }
+
+#titulo-b h1{
+ 
+  border-top: 0.2em double #fff;
+  border-bottom: 0.2em double #fff;
+  width: 79%;
+}
+
+#casellaCoc a {
+  border: none;
+  width: 12vw;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(25, 24, 24);
+  border-radius: 0.5em;
+}
+
+#casellaCoc a:hover {
+  color: black;
+  background-color: rgb(123, 196, 255);
+
+  box-shadow: 
+ 
+    0 0 10px rgb(123, 196, 255),
+    0 0 150px rgb(123, 196, 255),
+    0 0 20px rgb(123, 196, 255),
+    0 0 30px rgb(123, 196, 255),
+    0 0 40px rgb(123, 196, 255);
+}
+
+
+
+
 
 
 
@@ -359,12 +415,9 @@ background-color:rgb(30, 29, 26) ;
 #contenedor {
   color: white;
   background-color: rgb(30, 29, 26);
- justify-content: center;
 
   border-radius: 2em;
   box-shadow: 0 0 20px black;
- 
-  padding: 50px;
 }
 
 #coctel{
@@ -436,3 +489,4 @@ background-color:rgb(30, 29, 26) ;
   height: 500px;
   width: 100%;
  }
+
