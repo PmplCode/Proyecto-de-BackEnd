@@ -104,24 +104,27 @@ router.post("/crear", isLoggedIn, fileUploader.single('coctel-cover-image'), (re
 });
 
 router.get("/search", isLoggedIn, (req, res, next) => {
-    
-    console.log("req.query search: ", req.query.alcohol)
-    
-    const paraula = capitalize(req.query.alcohol)
-    
-    const filtre = { alcohol: {$regex : `${paraula}`}};
-    console.log("filtre regex: ", filtre)
-    
-    Coctel.find(filtre)
-    .then(resp => {
-      const data = { 
-        coctel: resp,
-        usuario: req.session.currentUser,
-        palab: req.query
-      }
-      res.render("principal", data);
-    })
-  })
+  let paraula1 = req.query.alcohol
+  if(paraula1.trim().length === 0){
+    return res.redirect("/principal")
+  } else {
+  console.log("req.query search: ", req.query.alcohol)
+  
+  const paraula = capitalize(req.query.alcohol)
+  
+  const filtre = { alcohol: {$regex : `${paraula}`}};
+  console.log("filtre regex: ", filtre)
+  
+  Coctel.find(filtre)
+  .then(resp => {
+    const data = { 
+      coctel: resp,
+      usuario: req.session.currentUser,
+      palab: req.query
+    }
+    res.render("principal", data);
+  })}
+})
 
 router.get("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy();

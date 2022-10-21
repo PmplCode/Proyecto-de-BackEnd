@@ -1,32 +1,52 @@
 {{> header usuario}}
-  
-<div id="bodyPerf">
-    <div class="card" style="width: 18rem;">
-        <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto de usuario">
-        <div class="card-body" id="cartaPerfil">
-            <h5 class="card-title" id="descrUser">{{user.username}}</h5>
-            <p class="card-text" id="nomUser">{{user.descripcion}}</p>
-            <div id="testeo"></div>
-        </div>     
-    </div>
-    
-    <div class="container text-center" id="cocteles">
-        <div class="row" id="cartComp">
-                
-            {{#each coctelUser}}
-                <div class="col-3 m-1" style="background-color: rgba(77, 76, 74, 0.5)" id="coctel">
-                    <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel" id="fotoCoc">
-                    <div class="card-body" id="infCub">
-                        <h5 class="card-title" id="titolCub"> {{name}}</h5>
-                        <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>    
-                    </div>
-                </div>
-            {{/each}}
 
-            <form>
-                <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
-            </form>
+<body id="cos">
+       
+
+
+    <div id="bodyPerf">
+        <div class="card" style="width: 25rem;" id="jCarta">
+            <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto d'usuari">
+            <div class="card-body" id="cartaPerfil">
+                <div id="titulo-b">
+                    <div id="titulo2-b"></div><h1>{{user.username}}</h1>
+                </div>
+                <p class="card-text" id="nomUser">{{user.descripcion}}</p>
+                {{!-- <div id="testeo"></div> --}}
+            </div>
+            
+               
+        </div>
+        
+            
+        
+    </div>
+    <div class="container text-center" id="cartelera">
+        <div class="row" id="cartComp">
+            {{#each coctelUser}}
+            <div class="col m-1" style="background-color: rgba(77, 76, 74, 0.5)" id="casellaCoc">
+                <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel" id="fotoCoc">
+                <div class="card-body" id="infCub">
+                    <h5 class="card-title" id="titolCub"> {{name}}</h5>
+
+                    <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>    
+                </div>
+
+                {{/each}}
+                
+                    <form>
+                        <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
+                    </form>
+                
+
+            </div>
+            
+
         </div>
     </div>
-</div>
 
+    
+
+</body>
+
+   
