@@ -1,0 +1,60 @@
+{{> header usuario}}
+
+<body id="bodyprincipal">
+
+
+<div id="crearcoctel">
+    <form action="/crear" method="POST" enctype="multipart/form-data">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nombre del cocktail" name="name" autocomplete="off">
+            <label for="floatingInput">Nombre del cocktail</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Alcohol Principal</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Alcohol Secundario</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" autocomplete="off" class="form-control" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Otro Alcohol</label>
+        </div>
+        <div class="form-floating mb-3 w-20 d-inline-block">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Alcohol" name="alcohol">
+            <label for="floatingPassword">Otro Alcohol</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Ingredientes"
+                name="ingredientes">
+            <label for="floatingPassword"> Ingredientes</label>
+        </div>
+<div class="form-group">
+    <label style="color: white;">Preparación del cóctel
+        <textarea name="procedimiento" cols="30" rows="4" class="form-control" autocomplete="off" ></textarea>
+    </label>
+</div>
+<div class="form-group">
+    <label style="color: white;">Descripción del cóctel
+        <textarea name="descripcion" autocomplete="off" cols="30" rows="4" class="form-control"></textarea>
+    </label>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" name="origen" style="margin-top: 15px">
+    <label for="floatingInput" autocomplete="off">Origen</label>
+</div>
+        <div class="form-group">
+            <label style="color: white; margin-top: 15px">Sube tu imagen:
+                <input type="file" name="coctel-cover-image" class="form-control-file" />
+            </label>
+        </div>
+       
+       
+       
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 15px">Sube tu creación</button>
+    </form>
+</div>
+
+</body>

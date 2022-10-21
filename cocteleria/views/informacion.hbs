@@ -1,0 +1,50 @@
+{{> header usuario}}
+
+<body id="bodyprincipal">
+    
+
+<div class="card mb-3" style="width = 90 vw; background-color: rgb(30, 29, 26); margin: 3% 10%;" id="cocteles">
+    <div class="row g-0" >
+        {{#with coctel}}
+        <div class="col-md-4">
+            <img src="{{imageUrl}}" class="img-fluid rounded-start" alt="Imagen del cóctel" >
+        </div>
+        <div class="col-md-8">
+            <div class="card-title">
+                <div id="titulo" >
+                    <div id="titulo2">
+                    </div>
+                    <h1>{{name}}</h1>
+                </div>
+              
+                <h4 class="card-title">Ingredientes:</h4>
+                <p class="card-text">{{alcohol}}</p>
+                <p class="card-text">{{ingredientes}}</p>
+
+                <h4 class="card-title">Preparación del cóctel:</h4>
+                <p class="card-text">{{procedimiento}}</p>
+
+                <h4 class="card-title">Descripción del cóctel:</h4>
+                <p class="card-text">{{descripcion}}</p>
+                <p class="card-text">{{origen}}</p>
+                
+                <a href="/profile/{{creador._id}}">{{creador.username}}</a><br><br>
+                {{!-- <p class="card-text"><small class="text-muted">{{creador.username}}</small></p> --}}
+            <a href="/premium">Ver la localización de Coctelerías</a><p>Si no eres Premium, no podrás acceder.</p>
+            </div>
+            <form>
+                <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
+            </form>
+        {{/with}}
+        {{#if esCreador}}
+        <a href="/informacion/{{coctel._id}}/edit" class="btn btn-primary">Editar cóctel</a>
+        <div class="modal-footer">
+                    <form action="/delete/{{coctel._id}}" method="post">
+                        <button type="submit" class="btn btn-primary">Eliminar definitivamente</button>
+                    </form>
+                </div>
+        </div>
+        {{/if}}
+    </div>
+</div>
+</body>

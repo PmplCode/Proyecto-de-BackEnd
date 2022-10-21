@@ -1,0 +1,63 @@
+{{> header usuario}}
+
+<body id="cos">
+       
+
+
+    <div id="bodyPerf">
+        <div class="card" style="width: 25rem; " id="jCarta">
+            <img src="{{user.fotoPerfil}}" class="card-img-top" alt="Foto d'usuari">
+            <div class="card-body" id="cartaPerfil">
+                <div id="titulo-b">
+                    <div id="titulo2-b"></div><h1>{{user.username}}</h1>
+                </div>
+                <p class="card-text" id="nomUser">{{user.descripcion}}</p>
+                {{!-- <div id="testeo"></div> --}}
+            </div>
+            
+               
+        </div>
+        <div  class="row" style="width: 100%; background-color: #1E1D1A; margin: 5%" id="cocteles">
+            
+      
+            {{#each coctelUser}}
+        <div class="col-3 card " style="width: 18rem; background-color: rgba(77, 76, 74, 0.5); border-radius: 2em; margin: 1%; text-align: center; ">
+            <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel" id="fotoCoc">
+            <div class="card-body" id="infCub">
+                <h5 class="card-title" style="color:white;">{{name}}</h5>
+                
+                <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>
+            </div>
+        </div>
+                {{/each}}
+        <form>
+            <input type="button" class="btn btn-light text-black h6 mt-3" value="Volver atrás" onclick="history.back()">
+        </form>
+</div>
+    {{!-- </div>
+    <div class="container text-center" id="cocteles">
+        <div class="row" id="contenedor">
+            {{#each coctelUser}}
+            <div class="col-3 m-1" style="background-color: rgba(77, 76, 74, 0.5)" id="casellaCoc">
+                <img src="{{imageUrl}}" class="card-img-top" alt="Imagen del cóctel" id="fotoCoc">
+                <div class="card-body" id="infCub">
+                    <h5 class="card-title" id="titolCub"> {{name}}</h5>
+
+                    <a href="/informacion/{{_id}}" class="btn btn-primary">Más información</a>    
+                </div>
+
+                {{/each}} --}}
+                
+                    
+                
+
+          
+            </div>
+
+   
+
+    
+
+</body>
+
+   

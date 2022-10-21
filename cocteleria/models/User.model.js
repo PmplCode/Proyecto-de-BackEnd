@@ -7,19 +7,19 @@ const userSchema = new Schema(
       type: String,
       required: false,
       unique: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
     },
     password: {
       type: String,
       required: true,
     },
+    descripcion: String,
+    fotoPerfil: {
+      type: String,
+      default: "https://c1.alamy.com/thumbs/2fntnx5/icono-de-perfil-de-messenger-sobre-fondo-blanco-aislado-ilustracion-2fntnx5.jpg"
+    },
+    isPremium: {
+      type: Boolean,
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
