@@ -16,7 +16,6 @@ body {
   margin-right: 10%;
 }
 
-
 #login {
   display: flex;
   justify-content: space-between;
@@ -27,7 +26,6 @@ body {
   background-color: #141414;
   border-radius: 1em;
   box-shadow: 0 0 20px black, 0 0 50px black;
-
 }
 
 #indexder {
@@ -124,7 +122,6 @@ body {
 
 @keyframes neon {
   from {
-
     text-shadow: 0 0 9px rgba(202, 228, 225, 0.92),
       0 0 30px rgba(202, 228, 225, 0.39), 0 0 25px rgba(22, 25, 181, 0.52),
       0 0 27px rgba(22, 50, 109, 0.92), 0 0 33px rgba(77, 107, 242, 0.78),
@@ -144,28 +141,6 @@ body {
   margin-top: 100px;
   width: 25px;
   height: 25px;
-
-}
-
-/* ESTILOS DE LA BARRA DE NAVEGACIÓN  */
-#navbar {
-  border-top: 2px solid rgba(202, 228, 225, 0.98);
-  background-color: #141414;
-  padding: 0;
-  align-items: center;
-  color: white;
-}
-#navbar p {
-  font-family: "Qwitcher Grypen", cursive;
-  color: white;
-  align-self: center;
-  vertical-align: middle;
-}
-#navbar div {
-  background-color: transparent;
-}
-#navbar svg {
-  color: white;
 }
 
 /* ESTILOS DEL PRINCIPAL  */
@@ -191,14 +166,6 @@ body {
   border-bottom: 0.2em double #fff;
 }
 
-#cos {
-  background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #141414;
-}
-
 #bodyPerf {
   background-image: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
   background-size: cover;
@@ -207,12 +174,11 @@ body {
   background-color: #141414;
 }
 
-#bodyPerf {
-  display: flex;
+#userImg {
+  height: 40vh;
+  object-fit: cover;
 }
-
-
-#cartelera{
+#cartelera {
   float: right;
 
   margin-left: 5%;
@@ -225,7 +191,6 @@ body {
     0 0 30px rgb(178, 30, 242);
 
   height: 100%;
-
 }
 
 #ladrillosA {
@@ -239,7 +204,6 @@ body {
 #descrUser {
   color: rgba(238, 30, 242, 0.78);
 }
-
 
 #fotoCoc {
   height: 60%;
@@ -265,27 +229,17 @@ body {
   max-height: 100%;
 }
 
-#cartaPerfil {
-  background-color: rgb(30, 29, 26);
-}
-
 #casellaCoc {
   border-radius: 2em;
 }
 
-#jCarta {
-  height: 100%;
-  margin-left: 3%;
-  margin-top: 3%;
-}
-
-#titulo-b {
+#username {
   display: flex;
   justify-content: center;
-  align-content: center;
-  padding: 5%;
-  margin: auto;
-  width: 80%;
+  padding: 0.5em;
+  /* padding: 5%; */
+  /* margin: auto; */
+  width: 30vw;
   font-family: "Monoton", cursive;
   text-shadow: 0 0 5px #fff, 0 0 10px rgb(138, 23, 139),
     0 0 15px rgb(238, 30, 242);
@@ -295,10 +249,9 @@ body {
     0 0 15px rgb(30, 242, 235);
 }
 
-#titulo-b h1 {
+#username h2 {
   border-top: 0.2em double #fff;
   border-bottom: 0.2em double #fff;
-  width: 79%;
 }
 
 #casellaCoc a {
@@ -337,7 +290,6 @@ body {
   background-color: rgb(30, 29, 26);
 
   color: rgb(255, 123, 255);
-
 }
 
 #cocteles {
@@ -361,6 +313,7 @@ body {
 
 #coctel {
   border-radius: 2em;
+  box-shadow: 0 0 10px rgb(20, 19, 19);
 }
 
 #coctel img {
