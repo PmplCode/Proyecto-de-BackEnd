@@ -16,6 +16,7 @@ body {
   margin-right: 10%;
 }
 
+
 #login {
   display: flex;
   justify-content: space-between;
@@ -26,6 +27,7 @@ body {
   background-color: #141414;
   border-radius: 1em;
   box-shadow: 0 0 20px black, 0 0 50px black;
+
 }
 
 #indexder {
@@ -122,6 +124,7 @@ body {
 
 @keyframes neon {
   from {
+
     text-shadow: 0 0 9px rgba(202, 228, 225, 0.92),
       0 0 30px rgba(202, 228, 225, 0.39), 0 0 25px rgba(22, 25, 181, 0.52),
       0 0 27px rgba(22, 50, 109, 0.92), 0 0 33px rgba(77, 107, 242, 0.78),
@@ -141,6 +144,7 @@ body {
   margin-top: 100px;
   width: 25px;
   height: 25px;
+
 }
 
 /* ESTILOS DE LA BARRA DE NAVEGACIÓN  */
@@ -207,7 +211,10 @@ body {
   display: flex;
 }
 
-#cartelera {
+
+#cartelera{
+  float: right;
+
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 4%;
@@ -216,7 +223,9 @@ body {
   border: 0.8em double #fff;
   box-shadow: 0 0 5px #fff, 0 0 10px rgb(255, 123, 255),
     0 0 30px rgb(178, 30, 242);
+
   height: 100%;
+
 }
 
 #ladrillosA {
@@ -231,6 +240,7 @@ body {
   color: rgba(238, 30, 242, 0.78);
 }
 
+
 #fotoCoc {
   height: 60%;
 }
@@ -240,6 +250,7 @@ body {
 }
 #titolCub {
   color: rgba(238, 30, 242, 0.78);
+
   margin-bottom: 10px;
 }
 #cartComp {
@@ -324,7 +335,9 @@ body {
   box-shadow: 0 0 5px #fff, 0 0 10px rgb(255, 123, 255),
     0 0 30px rgb(178, 30, 242);
   background-color: rgb(30, 29, 26);
+
   color: rgb(255, 123, 255);
+
 }
 
 #cocteles {
