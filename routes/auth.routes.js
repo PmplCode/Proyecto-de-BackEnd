@@ -30,26 +30,22 @@ router.post("/signup", isLoggedOut, (req, res) => {
   let premiumCheck = false;
 
   const arrayPremium = ["jaja", "coctel"];
-  if(arrayPremium.includes(`${req.body.isPremium}`)){
+  if (arrayPremium.includes(`${req.body.isPremium}`)) {
     premiumCheck = true;
   }
 
   // Check usuario y contraseñas se pasan
   if (username === "" || password === "") {
-
     res.status(400).render("auth/signup", {
-      errorMessage:
-        "Todos los campos son obligatorios!",
+      errorMessage: "Todos los campos son obligatorios!",
     });
 
     return;
   }
 
   if (password != req.body.passwordRepeat) {
-
     res.status(400).render("auth/signup", {
-      errorMessage:
-        "Contraseñas no coincidentes.",
+      errorMessage: "Contraseñas no coincidentes.",
     });
 
     return;
@@ -80,22 +76,23 @@ router.post("/signup", isLoggedOut, (req, res) => {
     .genSalt(saltRounds)
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
-      return User.create({ username, password: hashedPassword, isPremium: premiumCheck});
+      return User.create({
+        username,
+        password: hashedPassword,
+        isPremium: premiumCheck,
+      });
     })
     .then((user) => {
-
       req.session.currentUser = user;
-      console.log("req.session.currentUser - registre: ",req.session.currentUser)
-      res.redirect("/principal");
 
+      res.redirect("/principal");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(500).render("auth/signup", { errorMessage: error.message });
       } else if (error.code === 11000) {
         res.status(500).render("auth/signup", {
-          errorMessage:
-            "Este nombre de usuario ya está en uso, elige otro!",
+          errorMessage: "Este nombre de usuario ya está en uso, elige otro!",
         });
       } else {
         next(error);
@@ -115,8 +112,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
   // Check that username, email, and password are provided
   if (username === "" || password === "") {
     res.status(400).render("index", {
-      errorMessage:
-        "Rellene todos los campos, por favor!",
+      errorMessage: "Rellene todos los campos, por favor!",
     });
 
     return;
@@ -134,7 +130,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
   User.findOne({ username })
     .then((user) => {
       // If the user isn't found, send an error message that user provided wrong credentials
-      console.log("proba user: ", user);
+
       if (!user) {
         res
           .status(400)
@@ -152,12 +148,8 @@ router.post("/", isLoggedOut, (req, res, next) => {
               .render("index", { errorMessage: "Credenciales incorrectas!" });
             return;
           }
-
-
           req.session.currentUser = user;
-          console.log("req.session.currentUser - login: ",req.session.currentUser)
-          res.redirect("/profile/"+req.session.currentUser._id);
-
+          res.redirect("/principal");
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -168,7 +160,7 @@ router.post("/", isLoggedOut, (req, res, next) => {
 // router.get("/logout", isLoggedIn, (req, res) => {
 //   req.session.destroy((err) => {
 //     if (err) {
-//       res.status(500).render("auth/logout", { errorMessage: err.message });  
+//       res.status(500).render("auth/logout", { errorMessage: err.message });
 //       return;
 //     }
 
